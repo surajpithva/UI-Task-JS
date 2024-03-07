@@ -1,0 +1,186 @@
+.euphoria-script-regular {
+    font-family: "Euphoria Script", cursive;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.nav-bar {
+    font-family: "Inter", sans-serif;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 30px;
+    text-align: left;
+}
+
+.nav-img {
+    margin-right: 20px;
+}
+
+
+.carousel-item img {
+    height: auto;
+    object-fit: cover;
+}
+
+
+.slideBar-Text {
+
+    color: white;
+    font-size: 32px;
+    font-weight: 100;
+    line-height: 38px;
+    letter-spacing: 0.15738007426261902px;
+    text-align: left;
+
+}
+
+.pSlidebar {
+
+    color: white;
+    font-size: 55px;
+    font-weight: 100;
+    line-height: 80px;
+    letter-spacing: 0.31476014852523804px;
+    text-align: left;
+
+
+}
+
+.ptext {
+    color: white;
+
+    font-size: 32px;
+    font-weight: 100;
+    line-height: 47px;
+    letter-spacing: 0.31476014852523804px;
+    text-align: left;
+
+}
+
+.btn-slidebar {
+    margin-right: 85%;
+    width: 200px;
+}
+
+/*  Css for 4 product show  */
+.products {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+}
+
+.product-card {
+    width: 100%;
+}
+
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
+
+.scale {
+    object-fit: scale-down;
+}
+
+.removeul {
+    text-decoration: none;
+}
+
+.setArrow {
+    height: 15px;
+
+}
+
+/* heading after vertical Line */
+.headingVL {
+    margin-left: 10px;
+    font-size: 35px;
+    font-weight: lighter;
+
+}
+
+/* vertical line code */
+.verticalLine {
+    border-left: 5px solid rgba(138, 51, 253, 1);
+    height: 40px;
+    border-radius: 10px;
+}
+
+
+
+/* Static banner css code  */
+.banner-card {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.banner-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #fff;
+}
+
+
+
+.topBrands {
+    background-color: rgba(60, 66, 66, 1);
+    padding-bottom: 50px;
+    border-radius: 10px;
+
+}
+
+.topBrands h1 {
+    font-size: 45px;
+    text-align: center;
+    color: white;
+    font-weight: lighter;
+    margin-top: 40px;
+
+
+}
+
+.imgCenter {
+    display: flex;
+    justify-content: center;
+}
+
+.topBrands img {
+    width: 15%;
+    object-fit: scale-down;
+    margin-top: 35px;
+
+}
+
+.topBrands p {
+    margin-top: 10px;
+    font-size: 25px;
+}
+
+.card {
+    border-radius: .7rem;
+}
+
+/* footerr */
+.footerUL {
+    list-style-type: none;
+}
+
+.footerColor {
+    background-color: rgba(60, 66, 66, 1);
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.footerUL img {
+    height: 20px;
+    width: 20px;
+}
+
+.navHover:hover {
+    background-color: rgb(117, 117, 208);
+
+}

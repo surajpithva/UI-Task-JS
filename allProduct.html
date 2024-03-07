@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>All Products</title>
+  </head>
+  <link rel="stylesheet" href="./All-pro-style.css" />
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+    crossorigin="anonymous"
+  />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Euphoria+Script&display=swap"
+    rel="stylesheet"
+  />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cabin&display=swap"
+    rel="stylesheet"
+  />
+  <body>
+    <div class="container">
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid">
+          <u><a class="navbar-brand nav-bar" href="./index.html">Uphoria</a></u>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="categoryList">
+              <form method="GET" action="./allProduct.html">
+                <li class="nav-item navcategory">
+                  <a
+                    class="nav-link active navHover"
+                    aria-current="page"
+                    href=""
+                    >All Product</a
+                  >
+                </li>
+              </form>
+              <li class="nav-item navcategory">
+                <a class="nav-link active navHover" aria-current="page" href=""
+                  >jewelery</a
+                >
+              </li>
+              <li class="nav-item navcategory">
+                <a class="nav-link active navHover" aria-current="page" href=""
+                  >men's clothing</a
+                >
+              </li>
+              <li class="nav-item navcategory">
+                <a class="nav-link active navHover" aria-current="page" href=""
+                  >women's clothing</a
+                >
+              </li>
+            </ul>
+            <div class="d-flex">
+              <img
+                src="./assest/userProfile.png"
+                alt=""
+                height="30px"
+                width="30px"
+                class="nav-img"
+              />
+              <img
+                src="./assest/addToCart.png"
+                alt=""
+                srcset=""
+                height="30px"
+                width="30px"
+                class="nav-img"
+              />
+            </div>
+            <form class="d-flex">
+              <input
+                class="form-control me-2"
+                type="search"
+                placeholder="Search"
+                aria-label="Search"
+              />
+              <button class="btn btn-outline-success" type="submit">
+                Search
+              </button>
+            </form>
+          </div>
+        </div>
+      </nav>
+    </div>
+
+    <!-- Show All Products -->
+    <div class="">
+      <span> <b class="priceEdit">Filter Price:-</b></span>
+      <select
+        id="priceDropDown"
+        class="PriceSelect"
+        onchange="getPriceSelect()"
+      >
+        <option value="all">All</option>
+        <option value="lessHundred">Rs.100 and Below</option>
+        <option value="greaterHundred">Rs.100 above</option>
+      </select>
+    </div>
+
+    <!-- <div>
+      <input type="text" placeholder="Search..." />
+      <button type="button" class="data-search" id="search" onclick="searchP()">
+        Search
+      </button>
+    </div> -->
+
+    <span class="priceEdit"><b>Search Your Product:-</b></span>
+    <input
+      type="search"
+      id="search"
+      class="data-search"
+      placeholder="Search Prodcuts"
+      title="Type in a name"
+    />
+
+    <div class="allProducts row"></div>
+
+    <!-- open model -->
+
+    <div class="modal myModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <div>More About Items</div>
+            <!-- <h5 class="modal-title">Modal Title</h5> -->
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              onclick="closeModal()"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+
+          <!-- Modal Body -->
+          <div class="modal-body prod">
+            <h5 class="modal-title" id="title"></h5>
+            <img src="" alt="" class="modelImage" id="myImage" />
+            <div class="title pt-4 pb-1" id="category"></div>
+            <p id="description"></p>
+
+            <div><b> Price:- </b> <span class="price" id="price"></span></div>
+            <div class="price" id="rate"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="./script.js"></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+    integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+    crossorigin="anonymous"
+  ></script>
+</html>
