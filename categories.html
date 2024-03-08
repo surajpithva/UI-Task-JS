@@ -21,9 +21,23 @@
     href="https://fonts.googleapis.com/css2?family=Cabin&display=swap"
     rel="stylesheet"
   />
+  <style>
+    .product-img {
+      width: 50%;
+      height: 200px;
+      object-fit: contain;
+      object-position: center;
+    }
+
+    .modelImage {
+      width: 50%;
+    }
+  </style>
   <body>
-    <div class="seleAllProducts row"></div>
-    <input type="text" id="cate" />
+    <!--  -->
+
+    <!--  -->
+    <div class="seleAllProducts row" id="cate"></div>
   </body>
   <script>
     const searchParams = new URLSearchParams(window.location.search);
@@ -51,7 +65,6 @@
           .join("");
         selProductsContainer.innerHTML = setdata;
       });
-    // console.log(searchParams);
   </script>
 
   <script src="./script.js"></script>

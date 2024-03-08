@@ -1,4 +1,5 @@
 const navcategory = document.querySelector("#categoryList");
+const AllProductContainer = document.querySelector(".allProducts");
 
 /////////////////fetch categories from api////////////////////////
 const selectData = () => {
@@ -18,8 +19,6 @@ selectData();
 
 //////////////////////Show All Product////////////////////
 
-const AllProductContainer = document.querySelector(".allProducts");
-
 if (document.URL.includes("allProduct.html")) {
   const getAllProductData = () => {
     fetch(`https://fakestoreapi.com/products`)
@@ -27,7 +26,7 @@ if (document.URL.includes("allProduct.html")) {
         return response.json();
       })
       .then((data) => {
-        searchFunctionality(data);
+        // searchFunctionality(data);
         let setdata = data
           .map((product) => {
             const html = `<div class="col-md-3">
@@ -46,46 +45,114 @@ if (document.URL.includes("allProduct.html")) {
           })
           .join("");
         AllProductContainer.innerHTML = setdata;
+
+        filteringData(data);
       });
   };
   getAllProductData();
+  ///////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////
 
-  //////////////////////filter Price////////////////////////////
-  const getPriceSelect = () => {
-    const selectPrice = priceDropDown.value;
+  const filterData = document.querySelector(".filterData");
+  const PriceSelect = document.querySelector(".PriceSelect");
+  const procuctDropDown = document.querySelector("#procuctDropDown");
 
-    fetch(`https://fakestoreapi.com/products`)
-      .then((response) => response.json())
-      .then((data) => {
-        let filteredData;
+  const filteringData = (data) => {
+    filterData.addEventListener("click", (e) => {
+      const selectedCategory = procuctDropDown.value;
+      const selectedPrice = PriceSelect.value;
 
-        if (selectPrice === "lessHundred") {
-          filteredData = data.filter((product) => product.price <= 100);
-        } else if (selectPrice === "greaterHundred") {
-          filteredData = data.filter((product) => product.price > 100);
-        } else {
-          filteredData = data;
-        }
+      const allData = [...new Set(data.map((item) => item.category))];
 
-        const setdata = filteredData
-          .map((product) => {
-            return `<div class="col-md-3">
-            <div class="card shadow p-3 mb-5 bg-white rounded">
-              <img class="card-img-top product-img" src="${product.image}" alt="Card image cap">
-              <div class="card-body">
-                <p class="card-text">${product.title}</p>
-                <h5 class="card-title">${product.price}</h5>
-                <p class="card-text">${product.category}</p>
-                <button type="button" class="btn btn-primary" onclick="openModal(${product.id})">More Details</button>
+      if (
+        allData.includes(selectedCategory) &&
+        selectedPrice === "lessHundred"
+      ) {
+        fetch(`https://fakestoreapi.com/products/category/${selectedCategory}`)
+          .then((response) => response.json())
+          .then((data) => {
+            let filteredData = data.filter((product) => product.price <= 100);
+
+            filteredData
+              .map((product) => {
+                const html = `
+                <div class="col-md-3">
+                  <div class="card shadow p-3 mb-5 bg-white rounded" >
+                    <img class="card-img-top product-img" src="${product.image}" alt="Card image cap">
+                    <div class="card-body">
+                    <p class="card-text">${product.title}</p>
+                    <h5 class="card-title">${product.price}$</h5>
+                    <p class="card-text">${product.category}</p>
+                    <button type="button" class="btn btn-primary" onclick="openModal(${product.id})">More Details</button>
+                    </div>
+                </div>
               </div>
-            </div>
-          </div>`;
-          })
-          .join("");
+              `;
+                return html;
+              })
+              .join("");
+            AllProductContainer.innerHTML = filterData;
+          });
+      }
 
-        AllProductContainer.innerHTML = setdata;
-      });
+      // console.log(selectedCategory);
+      // console.log(selectedPrice);
+    });
   };
+  filteringData();
+  // const renderHTML=(data)=>{
+  //   return data.map((product)=>`
+  //               <div class="col-md-3">
+  //                 <div class="card shadow p-3 mb-5 bg-white rounded" >
+  //                   <img class="card-img-top product-img" src="${product.image}" alt="Card image cap">
+  //                   <div class="card-body">
+  //                     <p class="card-text">${product.title}</p>
+  //                     <h5 class="card-title">${product.price}$</h5>
+  //                     <p class="card-text">${product.category}</p>
+  //                     <button type="button" class="btn btn-primary" onclick="openModal(${product.id})">More Details</button>
+  //                   </div>
+  //                 </div>
+  //               </div>
+  //             `)
+  //             .join("")
+
+  // }
+  //////////////////////filter Price////////////////////////////
+  // const getPriceSelect = () => {
+  //   const selectPrice = priceDropDown.value;
+
+  //   fetch(`https://fakestoreapi.com/products`)
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       let filteredData;
+
+  //       if (selectPrice === "lessHundred") {
+  //         filteredData = data.filter((product) => product.price <= 100);
+  //       } else if (selectPrice === "greaterHundred") {
+  //         filteredData = data.filter((product) => product.price > 100);
+  //       } else {
+  //         filteredData = data;
+  //       }
+
+  //       const setdata = filteredData
+  //         .map((product) => {
+  //           return `<div class="col-md-3">
+  //           <div class="card shadow p-3 mb-5 bg-white rounded">
+  //             <img class="card-img-top product-img" src="${product.image}" alt="Card image cap">
+  //             <div class="card-body">
+  //               <p class="card-text">${product.title}</p>
+  //               <h5 class="card-title">${product.price}</h5>
+  //               <p class="card-text">${product.category}</p>
+  //               <button type="button" class="btn btn-primary" onclick="openModal(${product.id})">More Details</button>
+  //             </div>
+  //           </div>
+  //         </div>`;
+  //         })
+  //         .join("");
+
+  //       AllProductContainer.innerHTML = setdata;
+  //     });
+  // };
 
   //////////////////////////////////////////////////////////
 
@@ -125,6 +192,55 @@ if (document.URL.includes("allProduct.html")) {
   }
   searchFunctionality();
 }
+
+//////////////////Select Categories////////////////////////////////////
+const selectedData = () => {
+  fetch("https://fakestoreapi.com/products/categories")
+    .then((response) => response.json())
+    .then((data) => {
+      // console.log(data);
+      const setdata = data.map(
+        (category) => `<option value="${category}">${category}</option>`
+      );
+      const defaultOption = `<option value="selected" selected disabled > Here </option>`;
+      procuctDropDown.innerHTML = defaultOption + setdata.join("");
+      // console.log(data);
+    });
+};
+
+selectedData();
+///////////////////////////////////////////////////////////////
+
+// const countriesDropDown = document.getElementById("countriesDropDown");
+
+// const getValueSelect = () => {
+//   const selectedCategory = countriesDropDown.value;
+
+//   if (selectedCategory !== "selected") {
+//     fetch(`https://fakestoreapi.com/products/category/${selectedCategory}`)
+//       .then((response) => response.json())
+//       .then((data) => {
+//         const setdata = data
+//           .map((number, index) => {
+//             const html = `<div class="col-md-3 ">
+//         <div class="card shadow p-3 mb-5 bg-white rounded" >
+//   <img class="card-img-top product-img" src="${data[index].image}" alt="Card image cap">
+//   <div class="card-body">
+//     <h5 class="card-title">${data[index].price}</h5>
+//     <p class="card-text">${data[index].category}</p>
+//     <button type="button" class="btn btn-primary" onclick="openModal(${data[index].id})">More Details</button>
+//      </div>
+//   </div>
+// </div>`;
+//             return html;
+//           })
+//           .join("");
+//         AllProductContainer.innerHTML = setdata;
+//       });
+//   }
+// };
+
+// countriesDropDown.addEventListener("change", getValueSelect);
 
 ///////////////////////////////////////////////////////////////////////
 
@@ -202,7 +318,7 @@ if (document.URL.includes("index.html")) {
                     <div class="card-body">
                       <p class="card-text">${product.category}</p>
                       <a href="#" class="removeul">Explore Now!</a>
-                      <button type="button" onchange="openModel()">More</button>
+                      <button type="button" onchange="openModel()" class="btn btn-dark">More</button>
                       </div>
                   </div>
                 </div>

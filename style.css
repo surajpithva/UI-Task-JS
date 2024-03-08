@@ -22,45 +22,23 @@
     object-fit: cover;
 }
 
-
-.slideBar-Text {
-
+.carouselText {
+    font-weight: lighter;
     color: white;
-    font-size: 32px;
-    font-weight: 100;
-    line-height: 38px;
-    letter-spacing: 0.15738007426261902px;
+    position: absolute;
+    top: 30%;
+    left: 25%;
+    transform: translate(-50%, -50%);
     text-align: left;
-
 }
 
-.pSlidebar {
-
-    color: white;
-    font-size: 55px;
-    font-weight: 100;
-    line-height: 80px;
-    letter-spacing: 0.31476014852523804px;
-    text-align: left;
-
-
+.carouselImg {
+    position: relative;
 }
 
-.ptext {
-    color: white;
 
-    font-size: 32px;
-    font-weight: 100;
-    line-height: 47px;
-    letter-spacing: 0.31476014852523804px;
-    text-align: left;
 
-}
 
-.btn-slidebar {
-    margin-right: 85%;
-    width: 200px;
-}
 
 /*  Css for 4 product show  */
 .products {
@@ -107,7 +85,26 @@
     border-radius: 10px;
 }
 
+/* Big saving Zone */
+.bigsavingzone {
+    position: absolute;
+    transform: translate(30%, -180%);
+    color: white;
+}
 
+.bigsavingzoneone {
+    position: absolute;
+    transform: translate(130%, -180%);
+    color: white;
+
+}
+
+.bigsavingzonetwo {
+    position: absolute;
+    transform: translate(130%, -180%);
+    color: black;
+
+}
 
 /* Static banner css code  */
 .banner-card {

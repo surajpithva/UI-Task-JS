@@ -50,7 +50,7 @@
                   >
                 </li>
               </form>
-              <li class="nav-item navcategory">
+              <!-- <li class="nav-item navcategory">
                 <a class="nav-link active navHover" aria-current="page" href=""
                   >jewelery</a
                 >
@@ -64,7 +64,7 @@
                 <a class="nav-link active navHover" aria-current="page" href=""
                   >women's clothing</a
                 >
-              </li>
+              </li> -->
             </ul>
             <div class="d-flex">
               <img
@@ -83,64 +83,60 @@
                 class="nav-img"
               />
             </div>
-            <form class="d-flex">
-              <input
-                class="form-control me-2"
-                type="search"
-                placeholder="Search"
-                aria-label="Search"
-              />
-              <button class="btn btn-outline-success" type="submit">
-                Search
-              </button>
-            </form>
           </div>
         </div>
       </nav>
     </div>
 
     <!-- Show All Products -->
-    <div class="">
-      <span> <b class="priceEdit">Filter Price:-</b></span>
-      <select
-        id="priceDropDown"
-        class="PriceSelect"
-        onchange="getPriceSelect()"
-      >
-        <option value="all">All</option>
-        <option value="lessHundred">Rs.100 and Below</option>
-        <option value="greaterHundred">Rs.100 above</option>
-      </select>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3">
+          <span> <b class="priceEdit">Filter Price:-</b></span>
+          <select id="priceDropDown" class="PriceSelect">
+            <option value="all">All</option>
+            <option value="lessHundred">Rs.100 and Below</option>
+            <option value="greaterHundred">Rs.100 above</option>
+          </select>
+        </div>
+        <div class="col-md-3">
+          <!-- Search Product -->
+          <span class="priceEdit"><b>Search Your Product:-</b></span>
+          <input
+            id="search"
+            class="form-control me-2 data-search"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+          />
+        </div>
+        <div class="col-md-3">
+          <div class="editCategory">
+            <!-- Choose Category -->
+            <b><span>Choose Your Category : -</span></b>
+            <select id="procuctDropDown" class="categorySelect"></select>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <button class="btn btn-outline-success filterData" type="submit">
+            Search
+          </button>
+        </div>
+      </div>
     </div>
-
-    <!-- <div>
-      <input type="text" placeholder="Search..." />
-      <button type="button" class="data-search" id="search" onclick="searchP()">
-        Search
-      </button>
-    </div> -->
-
-    <span class="priceEdit"><b>Search Your Product:-</b></span>
-    <input
-      type="search"
-      id="search"
-      class="data-search"
-      placeholder="Search Prodcuts"
-      title="Type in a name"
-    />
 
     <div class="allProducts row"></div>
 
     <!-- open model -->
 
-    <div class="modal myModal">
+    <!-- <div class="modal myModal">
       <div class="modal-dialog">
-        <div class="modal-content">
-          <!-- Modal Header -->
-          <div class="modal-header">
-            <div>More About Items</div>
-            <!-- <h5 class="modal-title">Modal Title</h5> -->
-            <button
+        <div class="modal-content"> -->
+    <!-- Modal Header -->
+    <!-- <div class="modal-header"> -->
+    <!-- <div>More About Items</div> -->
+    <!-- <h5 class="modal-title">Modal Title</h5> -->
+    <!-- <button
               type="button"
               class="close"
               data-dismiss="modal"
@@ -149,10 +145,10 @@
             >
               <span aria-hidden="true">&times;</span>
             </button>
-          </div>
+          </div> -->
 
-          <!-- Modal Body -->
-          <div class="modal-body prod">
+    <!-- Modal Body -->
+    <!-- <div class="modal-body prod">
             <h5 class="modal-title" id="title"></h5>
             <img src="" alt="" class="modelImage" id="myImage" />
             <div class="title pt-4 pb-1" id="category"></div>
@@ -163,7 +159,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
   </body>
   <script src="./script.js"></script>
   <script
