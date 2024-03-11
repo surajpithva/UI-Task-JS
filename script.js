@@ -17,7 +17,76 @@ const selectData = () => {
 
 selectData();
 
-//////////////////////Show All Product////////////////////
+// open model
+function openModals(productId) {
+  console.log(`Opening modal for product with ID: ${productId}`);
+}
+
+//
+const openModal = function (id) {
+  console.log(id);
+  document.querySelector(".myModal").style.display = "block";
+  const title = document.getElementById("title");
+  const image = document.getElementById("myImage");
+  const desc = document.getElementById("description");
+  const category = document.getElementById("category");
+  const price = document.getElementById("price");
+  const rate = document.getElementById("rate");
+  const btncart = document.getElementById(".btncart");
+  const ppid = document.getElementById("ppid");
+
+  fetch(`https://fakestoreapi.com/products/${id}`)
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+      image.src = data.image;
+      title.innerHTML = data.title;
+      desc.innerHTML = data.description.slice(0, 90);
+      category.innerHTML = data.category;
+      price.innerHTML = data.price;
+      rate.innerHTML = data.rating.rate;
+      prodid.value = data.id;
+    });
+  btn.addEventListener("click", (e) => {
+    addToCart(e, data.id);
+  });
+};
+const addToCart = (e, id) => {
+  console.log(id);
+};
+function closeModal() {
+  document.querySelector(".myModal").style.display = "none";
+}
+
+let uCart = JSON.parse(localStorage.getItem("userCart")) || [];
+
+function addTooCart() {
+  const proid = document.getElementById("prodid").value;
+  fetch(`https://fakestoreapi.com/products/${proid}`)
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+      console.log(data);
+      let Cart = {
+        id: data.id,
+        category: data.category,
+        price: data.price,
+        title: data.title,
+        img: data.image,
+        qty: 1,
+      };
+      uCart.push(Cart);
+      localStorage.setItem("userCart", JSON.stringify(uCart));
+      window.location.href("add-to-cart.html");
+    });
+
+  console.log(popid);
+}
+
+//
+//////////////////////Show All Product in allProduct page ////////////////////
 
 if (document.URL.includes("allProduct.html")) {
   const getAllProductData = () => {
@@ -29,7 +98,7 @@ if (document.URL.includes("allProduct.html")) {
         // searchFunctionality(data);
         let setdata = data
           .map((product) => {
-            const html = `<div class="col-md-3">
+            return `<div class="col-md-3">
         <div class="card shadow p-3 mb-5 bg-white rounded" >
   <img class="card-img-top product-img" src="${product.image}" alt="Card image cap">
   <div class="card-body">
@@ -41,7 +110,6 @@ if (document.URL.includes("allProduct.html")) {
      </div>
   </div>
 </div>`;
-            return html;
           })
           .join("");
         AllProductContainer.innerHTML = setdata;
@@ -51,55 +119,77 @@ if (document.URL.includes("allProduct.html")) {
   };
   getAllProductData();
   ///////////////////////////////////////////////////////
-  ///////////////////////////////////////////////////////
+  ///////////////Code for work three fun////////////////////////////////////////
 
   const filterData = document.querySelector(".filterData");
   const PriceSelect = document.querySelector(".PriceSelect");
   const procuctDropDown = document.querySelector("#procuctDropDown");
+  const serchInput = document.querySelector(".data-search");
+  // const AllProductContainer = document.getElementById("AllProductContainer");
 
+  // Function to handle search functionality
+  function searchFunctionality(data) {
+    serchInput.addEventListener("input", (e) => {
+      const value = e.target.value.toLowerCase();
+
+      const filterData = data.filter((item) => {
+        const searchedData = item.title.toLowerCase().includes(value);
+        return searchedData;
+      });
+
+      renderFilteredProducts(filterData);
+    });
+  }
+
+  // Function to render filtered products to the DOM
+  const renderFilteredProducts = (filteredData) => {
+    AllProductContainer.innerHTML = filteredData
+      .map((product) => {
+        return `
+            <div class="col-md-3">
+              <div class="card shadow p-3 mb-5 bg-white rounded" >
+                <img class="card-img-top product-img" src="${product.image}" alt="Card image cap">
+                <div class="card-body">
+                  <p class="card-text">${product.title}</p>
+                  <h5 class="card-title">${product.price}$</h5>
+                  <p class="card-text">${product.category}</p>
+                  <button type="button" class="btn btn-primary" onclick="openModal(${product.id})">More Details</button>
+                </div>
+              </div>
+            </div>
+          `;
+      })
+      .join("");
+  };
+
+  // Function to handle filtering based on category and price
   const filteringData = (data) => {
     filterData.addEventListener("click", (e) => {
       const selectedCategory = procuctDropDown.value;
       const selectedPrice = PriceSelect.value;
 
-      const allData = [...new Set(data.map((item) => item.category))];
+      // Your filtering logic here
+      const filteredData = data.filter((product) => {
+        return (
+          (selectedCategory === "all" ||
+            product.category === selectedCategory) &&
+          (selectedPrice === "all" ||
+            (selectedPrice === "lessHundred" && product.price <= 100) ||
+            (selectedPrice === "greaterHundred" && product.price > 100))
+        );
+      });
 
-      if (
-        allData.includes(selectedCategory) &&
-        selectedPrice === "lessHundred"
-      ) {
-        fetch(`https://fakestoreapi.com/products/category/${selectedCategory}`)
-          .then((response) => response.json())
-          .then((data) => {
-            let filteredData = data.filter((product) => product.price <= 100);
-
-            filteredData
-              .map((product) => {
-                const html = `
-                <div class="col-md-3">
-                  <div class="card shadow p-3 mb-5 bg-white rounded" >
-                    <img class="card-img-top product-img" src="${product.image}" alt="Card image cap">
-                    <div class="card-body">
-                    <p class="card-text">${product.title}</p>
-                    <h5 class="card-title">${product.price}$</h5>
-                    <p class="card-text">${product.category}</p>
-                    <button type="button" class="btn btn-primary" onclick="openModal(${product.id})">More Details</button>
-                    </div>
-                </div>
-              </div>
-              `;
-                return html;
-              })
-              .join("");
-            AllProductContainer.innerHTML = filterData;
-          });
-      }
-
-      // console.log(selectedCategory);
-      // console.log(selectedPrice);
+      renderFilteredProducts(filteredData);
     });
   };
-  filteringData();
+
+  // Assume you have product data available in the 'products' array
+  const products = []; // Replace with your actual product data
+  filteringData(products);
+
+  // Call search functionality with your product data
+  searchFunctionality(products);
+
   // const renderHTML=(data)=>{
   //   return data.map((product)=>`
   //               <div class="col-md-3">
@@ -117,80 +207,6 @@ if (document.URL.includes("allProduct.html")) {
   //             .join("")
 
   // }
-  //////////////////////filter Price////////////////////////////
-  // const getPriceSelect = () => {
-  //   const selectPrice = priceDropDown.value;
-
-  //   fetch(`https://fakestoreapi.com/products`)
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       let filteredData;
-
-  //       if (selectPrice === "lessHundred") {
-  //         filteredData = data.filter((product) => product.price <= 100);
-  //       } else if (selectPrice === "greaterHundred") {
-  //         filteredData = data.filter((product) => product.price > 100);
-  //       } else {
-  //         filteredData = data;
-  //       }
-
-  //       const setdata = filteredData
-  //         .map((product) => {
-  //           return `<div class="col-md-3">
-  //           <div class="card shadow p-3 mb-5 bg-white rounded">
-  //             <img class="card-img-top product-img" src="${product.image}" alt="Card image cap">
-  //             <div class="card-body">
-  //               <p class="card-text">${product.title}</p>
-  //               <h5 class="card-title">${product.price}</h5>
-  //               <p class="card-text">${product.category}</p>
-  //               <button type="button" class="btn btn-primary" onclick="openModal(${product.id})">More Details</button>
-  //             </div>
-  //           </div>
-  //         </div>`;
-  //         })
-  //         .join("");
-
-  //       AllProductContainer.innerHTML = setdata;
-  //     });
-  // };
-
-  //////////////////////////////////////////////////////////
-
-  /////////////////////////Serch By name///////////////////////////////////
-  const serchInput = document.querySelector(".data-search");
-
-  function searchFunctionality(data) {
-    // console.log(data);
-    serchInput.addEventListener("input", (e) => {
-      const value = e.target.value.toLowerCase();
-      console.log(value, "my val");
-
-      const filterData = data.filter((item) => {
-        const searchedData = item.title.toLowerCase().includes(value);
-        return searchedData;
-      });
-
-      let setdata = filterData
-        .map((product) => {
-          const html = `<div class="col-md-3">
-        <div class="card shadow p-3 mb-5 bg-white rounded" >
-  <img class="card-img-top product-img" src="${product.image}" alt="Card image cap">
-  <div class="card-body">
-  <p class="card-text">${product.title}</p>
-
-    <h5 class="card-title">${product.price}</h5>
-    <p class="card-text">${product.category}</p>
-    <button type="button" class="btn btn-primary" onclick="openModal(${product.id})">More Details</button>
-     </div>
-  </div>
-</div>`;
-          return html;
-        })
-        .join("");
-      AllProductContainer.innerHTML = setdata;
-    });
-  }
-  searchFunctionality();
 }
 
 //////////////////Select Categories////////////////////////////////////
@@ -209,40 +225,6 @@ const selectedData = () => {
 };
 
 selectedData();
-///////////////////////////////////////////////////////////////
-
-// const countriesDropDown = document.getElementById("countriesDropDown");
-
-// const getValueSelect = () => {
-//   const selectedCategory = countriesDropDown.value;
-
-//   if (selectedCategory !== "selected") {
-//     fetch(`https://fakestoreapi.com/products/category/${selectedCategory}`)
-//       .then((response) => response.json())
-//       .then((data) => {
-//         const setdata = data
-//           .map((number, index) => {
-//             const html = `<div class="col-md-3 ">
-//         <div class="card shadow p-3 mb-5 bg-white rounded" >
-//   <img class="card-img-top product-img" src="${data[index].image}" alt="Card image cap">
-//   <div class="card-body">
-//     <h5 class="card-title">${data[index].price}</h5>
-//     <p class="card-text">${data[index].category}</p>
-//     <button type="button" class="btn btn-primary" onclick="openModal(${data[index].id})">More Details</button>
-//      </div>
-//   </div>
-// </div>`;
-//             return html;
-//           })
-//           .join("");
-//         AllProductContainer.innerHTML = setdata;
-//       });
-//   }
-// };
-
-// countriesDropDown.addEventListener("change", getValueSelect);
-
-///////////////////////////////////////////////////////////////////////
 
 ////////////////fetch  4 products from api//////////////////
 
@@ -330,6 +312,108 @@ if (document.URL.includes("index.html")) {
   };
   getWomenProducts();
 }
-/* <a href="#"><img src="./assest/right-arrow.png" class="setArrow" alt="" srcset=""/></a> */
 
 /////////////////////////////
+//////////////////////filter Price////////////////////////////
+// const getPriceSelect = () => {
+//   const selectPrice = priceDropDown.value;
+
+//   fetch(`https://fakestoreapi.com/products`)
+//     .then((response) => response.json())
+//     .then((data) => {
+//       let filteredData;
+
+//       if (selectPrice === "lessHundred") {
+//         filteredData = data.filter((product) => product.price <= 100);
+//       } else if (selectPrice === "greaterHundred") {
+//         filteredData = data.filter((product) => product.price > 100);
+//       } else {
+//         filteredData = data;
+//       }
+
+//       const setdata = filteredData
+//         .map((product) => {
+//           return `<div class="col-md-3">
+//           <div class="card shadow p-3 mb-5 bg-white rounded">
+//             <img class="card-img-top product-img" src="${product.image}" alt="Card image cap">
+//             <div class="card-body">
+//               <p class="card-text">${product.title}</p>
+//               <h5 class="card-title">${product.price}</h5>
+//               <p class="card-text">${product.category}</p>
+//               <button type="button" class="btn btn-primary" onclick="openModal(${product.id})">More Details</button>
+//             </div>
+//           </div>
+//         </div>`;
+//         })
+//         .join("");
+
+//       AllProductContainer.innerHTML = setdata;
+//     });
+// };
+////////////////////////////////////////
+// const countriesDropDown = document.getElementById("countriesDropDown");
+
+// const getValueSelect = () => {
+//   const selectedCategory = countriesDropDown.value;
+
+//   if (selectedCategory !== "selected") {
+//     fetch(`https://fakestoreapi.com/products/category/${selectedCategory}`)
+//       .then((response) => response.json())
+//       .then((data) => {
+//         const setdata = data
+//           .map((number, index) => {
+//             const html = `<div class="col-md-3 ">
+//         <div class="card shadow p-3 mb-5 bg-white rounded" >
+//   <img class="card-img-top product-img" src="${data[index].image}" alt="Card image cap">
+//   <div class="card-body">
+//     <h5 class="card-title">${data[index].price}</h5>
+//     <p class="card-text">${data[index].category}</p>
+//     <button type="button" class="btn btn-primary" onclick="openModal(${data[index].id})">More Details</button>
+//      </div>
+//   </div>
+// </div>`;
+//             return html;
+//           })
+//           .join("");
+//         AllProductContainer.innerHTML = setdata;
+//       });
+//   }
+// };
+
+// countriesDropDown.addEventListener("change", getValueSelect);
+
+/////////////////////////Serch By name///////////////////////////////////
+// const serchInput = document.querySelector(".data-search");
+
+//   function searchFunctionality(data) {
+//     // console.log(data);
+//     serchInput.addEventListener("input", (e) => {
+//       const value = e.target.value.toLowerCase();
+//       console.log(value, "my val");
+
+//       const filterData = data.filter((item) => {
+//         const searchedData = item.title.toLowerCase().includes(value);
+//         return searchedData;
+//       });
+
+//       let setdata = filterData
+//         .map((product) => {
+//           const html = `<div class="col-md-3">
+//         <div class="card shadow p-3 mb-5 bg-white rounded" >
+//   <img class="card-img-top product-img" src="${product.image}" alt="Card image cap">
+//   <div class="card-body">
+//   <p class="card-text">${product.title}</p>
+
+//     <h5 class="card-title">${product.price}</h5>
+//     <p class="card-text">${product.category}</p>
+//     <button type="button" class="btn btn-primary" onclick="openModal(${product.id})">More Details</button>
+//      </div>
+//   </div>
+// </div>`;
+//           return html;
+//         })
+//         .join("");
+//       AllProductContainer.innerHTML = setdata;
+//     });
+//   }
+//   searchFunctionality();

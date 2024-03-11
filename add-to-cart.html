@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <link rel="stylesheet" href="./add-to-cart.css" />
+  <link
+    rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+  />
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+    crossorigin="anonymous"
+  />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Euphoria+Script&display=swap"
+    rel="stylesheet"
+  />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cabin&display=swap"
+    rel="stylesheet"
+  />
+  <body>
+    <div class="container">
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid">
+          <u><a class="navbar-brand nav-bar" href="./index.html">Uphoria</a></u>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="categoryList">
+              <form method="GET" action="./allProduct.html">
+                <li class="nav-item navcategory">
+                  <a
+                    class="nav-link active navHover"
+                    aria-current="page"
+                    href="./allProduct.html"
+                    >All Product</a
+                  >
+                </li>
+              </form>
+            </ul>
+            <div class="d-flex">
+              <img
+                src="./assest/userProfile.png"
+                alt=""
+                height="35px"
+                width="15px"
+                class="nav-img"
+              />
+              <img
+                src="./assest/addToCart.png"
+                alt=""
+                srcset=""
+                height="35px"
+                width="15px"
+                class="nav-img"
+              />
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+
+    <!--  -->
+    <div class="card">
+      <div class="row">
+        <div class="col cart">
+          <div class="title">
+            <div class="row">
+              <div class="col addCartNav">
+                <span>Product Details</span>
+                <span style="margin-left: 250px">QUANTITY</span>
+                <span style="margin-left: 100px">SHIPPING</span>
+                <span style="margin-left: 130px">PRICE</span>
+                <span style="margin-left: 90px">ACTION</span>
+              </div>
+            </div>
+          </div>
+          <div class="border-bottom cartproduct">
+            <!-- <div class="row main align-items-center">
+              <div class="col-2">
+                <img
+                  class="img-fluid addtoCartImg"
+                  src="./assest/bigSav2.png"
+                />
+              </div>
+              <div class="col">
+                <div class="row text-muted">Shirt</div>
+                <div class="row">Cotton T-shirt</div>
+              </div>
+              <div class="col">
+                <a href="#">-</a><a href="#" class="border">1</a
+                ><a href="#">+</a>
+              </div>
+              <div class="col">
+                <div class="row text-muted">FREE</div>
+              </div>
+              <div class="col">
+                &euro; 44.00
+                <span class="close"
+                  ><img
+                    src="./assest/Delete.png"
+                    alt=""
+                    class="h-25,w-25"
+                    height="20px"
+                    width="20px"
+                /></span>
+              </div>
+            </div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--  -->
+    <!-- 
+    <div class="row my-5">
+      <div class="col-lg-6">
+        <b> <p>Discount codes</p> </b>
+        <p>Enter your coupon code if you have one</p>
+        <form action="">
+          <input type="text" class="type" />
+          <button type="button" class="btn btn-outline-primary">
+            Apply Code
+          </button>
+          <button type="button" class="btn btn-outline-primary">
+            Continue Shopping
+          </button>
+        </form>
+      </div>
+      <div class="col-lg-6">
+        <p>Sub Total</p>
+        <p>Shipping</p>
+        <p>Grand Total</p>
+        <hr />
+        <button type="button" class="btn btn-outline-primary btnaddcart">
+          Procced To WorkOut
+        </button>
+      </div>
+    </div> -->
+
+    <!-- <div class="col summary">
+      <hr />
+      <div class="row">
+        <div class="col" style="padding-left: 0">ITEMS 3</div>
+        <div class="col text-right">&euro; 132.00</div>
+      </div>
+      <form>
+        <p>SHIPPING</p>
+        <select>
+          <option class="text-muted">Standard-Delivery- &euro;5.00</option>
+        </select>
+        <p>GIVE CODE</p>
+        <input id="code" placeholder="Enter your code" />
+      </form>
+      <div
+        class="row"
+        style="border-top: 1px solid rgba(0, 0, 0, 0.1); padding: 2vh 0"
+      >
+        <div class="col">TOTAL PRICE</div>
+        <div class="col text-right">&euro; 137.00</div>
+      </div>
+      <button class="btn">CHECKOUT</button>
+    </div> -->
+    <!--  -->
+
+    <!-- footer -->
+    <div class="container footerColor">
+      <div class="row text-light">
+        <div class="col-md-3">
+          <ul class="footerUL float-start">
+            <h3>Need Help</h3>
+            <li>Contact Us</li>
+            <li>Track Order</li>
+            <li>Returns & Refunds</li>
+            <li>FAQ's</li>
+            <li>Career</li>
+
+            <a href="#">
+              <img src="./assest/facebook.png" alt="" class="my-5 mx-1"
+            /></a>
+            <a href="#">
+              <img src="./assest/instagram.png" alt="" class="mx-1"
+            /></a>
+            <a href="#">
+              <img src="./assest/linkedin.png" alt="" class="mx-1"
+            /></a>
+            <a href="#">
+              <img src="./assest/twitter-sign.png" alt="" class="mx-1"
+            /></a>
+          </ul>
+        </div>
+        <div class="col-md-3">
+          <ul class="footerUL">
+            <h3>Company</h3>
+            <li>About Us</li>
+            <li>euphoria Blog</li>
+            <li>euphoriastan</li>
+            <li>Collaboration</li>
+            <li>Media</li>
+          </ul>
+        </div>
+        <div class="col-md-3">
+          <ul class="footerUL">
+            <h3>More Info</h3>
+            <li>Term and Conditions</li>
+            <li>Privacy Policy</li>
+            <li>Shipping Policy</li>
+            <li>Sitemap</li>
+          </ul>
+        </div>
+        <div class="col-md-3">
+          <ul class="footerUL">
+            <h3>Location</h3>
+            <li>support@uptakeinfotech.com</li>
+            <li>
+              B-wing 3rd Floor, Sarita Darshan B/H City Gold, Ashram Rd, Muslim
+              Society, Navrangpura, Ahmedabad, Gujarat 380009
+            </li>
+            <li class="h3 my-4">Downdload The App</li>
+            <img src="./assest/androidLOGO.png" alt="" />
+            <span class="h6"
+              >Android App <br />
+              Google Play</span
+            >
+          </ul>
+        </div>
+      </div>
+      <hr />
+      <p class="text-light text-center">
+        Copyright © 2023 Uptake Infotech Pvt Ltd. All rights reserved.
+      </p>
+    </div>
+    <!--  -->
+  </body>
+  <script src="./script.js"></script>
+  <script src="./add-to-cart.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</html>

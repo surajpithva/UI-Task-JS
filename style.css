@@ -1,9 +1,11 @@
+/* Package for Euphoria */
 .euphoria-script-regular {
     font-family: "Euphoria Script", cursive;
     font-weight: 400;
     font-style: normal;
 }
 
+/* nav-bar style code */
 .nav-bar {
     font-family: "Inter", sans-serif;
     font-size: 24px;
@@ -16,6 +18,7 @@
     margin-right: 20px;
 }
 
+/* carousel style code */
 
 .carousel-item img {
     height: auto;
@@ -28,13 +31,13 @@
     position: absolute;
     top: 30%;
     left: 25%;
-    transform: translate(-50%, -50%);
+    transform: translate(-20%, -10%);
     text-align: left;
 }
 
-.carouselImg {
+/* .carouselImg {
     position: relative;
-}
+} */
 
 
 
@@ -86,24 +89,50 @@
 }
 
 /* Big saving Zone */
-.bigsavingzone {
+.custom-spacing {
+    margin-bottom: 20px;
+}
+
+
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Add styles for bigsaving zones */
+.bigsavingzone,
+.bigsavingzoneone,
+.bigsavingzonetwo,
+.bigsavingzonethree,
+.bigsavingzonefour {
     position: absolute;
-    transform: translate(30%, -180%);
     color: white;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.bigsavingzone {
+    transform: translate(10%, -180%);
 }
 
 .bigsavingzoneone {
-    position: absolute;
-    transform: translate(130%, -180%);
-    color: white;
-
+    transform: translate(110%, -180%);
 }
 
 .bigsavingzonetwo {
-    position: absolute;
-    transform: translate(130%, -180%);
+    transform: translate(90%, -180%);
     color: black;
 
+}
+
+.bigsavingzonethree {
+    transform: translate(300%, -150%);
+    color: black;
+}
+
+.bigsavingzonefour {
+    transform: translate(300%, -150%);
+    color: black;
 }
 
 /* Static banner css code  */
@@ -170,6 +199,7 @@
     background-color: rgba(60, 66, 66, 1);
     padding-top: 30px;
     padding-bottom: 30px;
+
 }
 
 .footerUL img {
@@ -181,3 +211,7 @@
     background-color: rgb(117, 117, 208);
 
 }
+
+
+
+/*  */

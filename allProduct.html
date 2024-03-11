@@ -88,20 +88,29 @@
       </nav>
     </div>
 
+    <!-- Show Loader  -->
+
     <!-- Show All Products -->
+
     <div class="container">
       <div class="row">
+        <!-- Filter Price -->
+        <!-- Choose Category -->
         <div class="col-md-3">
-          <span> <b class="priceEdit">Filter Price:-</b></span>
-          <select id="priceDropDown" class="PriceSelect">
-            <option value="all">All</option>
-            <option value="lessHundred">Rs.100 and Below</option>
-            <option value="greaterHundred">Rs.100 above</option>
-          </select>
+          <div class="editCategory">
+            <label for="procuctDropDown"><b>Choose Your Category:</b></label>
+            <select
+              id="procuctDropDown"
+              class="form-select categorySelect"
+            ></select>
+          </div>
         </div>
+
+        <!-- Search Product -->
         <div class="col-md-3">
-          <!-- Search Product -->
-          <span class="priceEdit"><b>Search Your Product:-</b></span>
+          <label for="search" class="priceEdit"
+            ><b>Search Your Product:</b></label
+          >
           <input
             id="search"
             class="form-control me-2 data-search"
@@ -110,33 +119,46 @@
             aria-label="Search"
           />
         </div>
+
         <div class="col-md-3">
-          <div class="editCategory">
-            <!-- Choose Category -->
-            <b><span>Choose Your Category : -</span></b>
-            <select id="procuctDropDown" class="categorySelect"></select>
-          </div>
+          <label for="priceDropDown" class="priceEdit"
+            ><b>Filter Price:</b></label
+          >
+          <select id="priceDropDown" class="form-select PriceSelect">
+            <option value="all">All</option>
+            <option value="lessHundred">Rs.100 and Below</option>
+            <option value="greaterHundred">Rs.100 above</option>
+          </select>
         </div>
-        <div class="col-md-3">
-          <button class="btn btn-outline-success filterData" type="submit">
+
+        <!-- Search Button with additional spacing -->
+        <div class="col-md-3 mb-2">
+          <!-- Empty label for spacing -->
+          <button
+            class="btn btn-outline-success filterData searchbtn"
+            type="submit"
+          >
             Search
           </button>
         </div>
       </div>
     </div>
 
+    <!-- <div class="container" id="AllProductContainer"> -->
+    <!-- Filtered products will be displayed here -->
+    <!-- </div> -->
     <div class="allProducts row"></div>
 
     <!-- open model -->
 
-    <!-- <div class="modal myModal">
+    <div class="modal myModal">
       <div class="modal-dialog">
-        <div class="modal-content"> -->
-    <!-- Modal Header -->
-    <!-- <div class="modal-header"> -->
-    <!-- <div>More About Items</div> -->
-    <!-- <h5 class="modal-title">Modal Title</h5> -->
-    <!-- <button
+        <div class="modal-content">
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <div></div>
+            <h5 class="modal-title"></h5>
+            <button
               type="button"
               class="close"
               data-dismiss="modal"
@@ -145,10 +167,11 @@
             >
               <span aria-hidden="true">&times;</span>
             </button>
-          </div> -->
+          </div>
 
-    <!-- Modal Body -->
-    <!-- <div class="modal-body prod">
+          <!-- Modal Body -->
+          <div class="modal-body prod">
+            <input type="hidden" name="" id="prodid" />
             <h5 class="modal-title" id="title"></h5>
             <img src="" alt="" class="modelImage" id="myImage" />
             <div class="title pt-4 pb-1" id="category"></div>
@@ -156,10 +179,19 @@
 
             <div><b> Price:- </b> <span class="price" id="price"></span></div>
             <div class="price" id="rate"></div>
+
+            <button
+              type="button"
+              class="btn btn-info"
+              id="addtocart btncart"
+              onclick="addTooCart()"
+            >
+              Add To Cart
+            </button>
           </div>
         </div>
       </div>
-    </div> -->
+    </div>
   </body>
   <script src="./script.js"></script>
   <script

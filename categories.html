@@ -32,12 +32,192 @@
     .modelImage {
       width: 50%;
     }
+    .footerUL {
+      list-style-type: none;
+    }
+
+    .footerColor {
+      background-color: rgb(13, 27, 27);
+      padding-top: 30px;
+      padding-bottom: 30px;
+    }
+
+    .footerUL img {
+      height: 20px;
+      width: 20px;
+    }
   </style>
   <body>
     <!--  -->
+    <div class="container">
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid">
+          <u><a class="navbar-brand nav-bar" href="./index.html">Uphoria</a></u>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="categoryList2">
+              <form method="GET" action="./allProduct.html">
+                <li class="nav-item navcategory">
+                  <a
+                    class="nav-link active navHover"
+                    aria-current="page"
+                    href="./allProduct.html"
+                    >All Product</a
+                  >
+                </li>
+              </form>
+            </ul>
+            <div class="d-flex">
+              <a href="">
+                <img
+                  src="./assest/userProfile.png"
+                  alt=""
+                  height="30px"
+                  width="30px"
+                  class="nav-img"
+                />
+              </a>
+              <a href="">
+                <img
+                  src="./assest/addToCart.png"
+                  alt=""
+                  srcset=""
+                  height="30px"
+                  width="30px"
+                  class="nav-img"
+                />
+              </a>
+            </div>
+            <!-- <form class="d-flex">
+              <input
+                class="form-control me-2"
+                type="search"
+                placeholder="Search"
+                aria-label="Search"
+              />
+              <button class="btn btn-outline-success" type="submit">
+                Search
+              </button>
+            </form> -->
+          </div>
+        </div>
+      </nav>
+    </div>
 
     <!--  -->
     <div class="seleAllProducts row" id="cate"></div>
+    <!-- footer -->
+
+    <div class="container footerColor">
+      <div class="row text-light">
+        <div class="col-md-3">
+          <ul class="footerUL float-start">
+            <h3>Need Help</h3>
+            <li>Contact Us</li>
+            <li>Track Order</li>
+            <li>Returns & Refunds</li>
+            <li>FAQ's</li>
+            <li>Career</li>
+
+            <a href="#">
+              <img src="./assest/facebook.png" alt="" class="my-5 mx-1"
+            /></a>
+            <a href="#">
+              <img src="./assest/instagram.png" alt="" class="mx-1"
+            /></a>
+            <a href="#">
+              <img src="./assest/linkedin.png" alt="" class="mx-1"
+            /></a>
+            <a href="#">
+              <img src="./assest/twitter-sign.png" alt="" class="mx-1"
+            /></a>
+          </ul>
+        </div>
+        <div class="col-md-3">
+          <ul class="footerUL">
+            <h3>Company</h3>
+            <li>About Us</li>
+            <li>euphoria Blog</li>
+            <li>euphoriastan</li>
+            <li>Collaboration</li>
+            <li>Media</li>
+          </ul>
+        </div>
+        <div class="col-md-3">
+          <ul class="footerUL">
+            <h3>More Info</h3>
+            <li>Term and Conditions</li>
+            <li>Privacy Policy</li>
+            <li>Shipping Policy</li>
+            <li>Sitemap</li>
+          </ul>
+        </div>
+        <div class="col-md-3">
+          <ul class="footerUL">
+            <h3>Location</h3>
+            <li>support@uptakeinfotech.com</li>
+            <li>
+              B-wing 3rd Floor, Sarita Darshan B/H City Gold, Ashram Rd, Muslim
+              Society, Navrangpura, Ahmedabad, Gujarat 380009
+            </li>
+            <li class="h3 my-4">Downdload The App</li>
+            <img src="./assest/androidLOGO.png" alt="" />
+            <span class="h6"
+              >Android App <br />
+              Google Play</span
+            >
+          </ul>
+        </div>
+      </div>
+      <hr />
+      <p class="text-light text-center">
+        Copyright © 2023 Uptake Infotech Pvt Ltd. All rights reserved.
+      </p>
+    </div>
+
+    <!-- model body -->
+    <div class="modal myModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <div>More About Items</div>
+            <h5 class="modal-title">Modal Title</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              onclick="closeModal()"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+
+          <!-- Modal Body -->
+          <div class="modal-body prod">
+            <h5 class="modal-title" id="title"></h5>
+            <img src="" alt="" class="modelImage" id="myImage" />
+            <div class="title pt-4 pb-1" id="category"></div>
+            <p id="description"></p>
+
+            <div><b> Price:- </b> <span class="price" id="price"></span></div>
+            <div class="price" id="rate"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--  -->
   </body>
   <script>
     const searchParams = new URLSearchParams(window.location.search);
@@ -68,6 +248,7 @@
   </script>
 
   <script src="./script.js"></script>
+
   <script
     src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
     integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
