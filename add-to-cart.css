@@ -1,24 +1,46 @@
+/* navbar img  */
+.nav-bar {
+    font-family: "Inter", sans-serif;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 30px;
+    text-align: left;
+}
+
 .nav-img {
     margin-right: 20px;
 }
 
+
+/* sweet alret   */
+body {
+    font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
 /*  */
+
+
 .addCartNav {
+
     background-color: rgba(60, 66, 66, 1);
+    height: 50px;
     color: white;
-
 }
 
-.title {
-    margin-bottom: 5vh;
+.pro__details {
+    margin-top: 13px;
 }
+
+.nav__pro_del {
+    margin-left: 220px;
+}
+
 
 .card {
     margin: auto;
-    max-width: 950px;
-    width: 90%;
-    box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    border-radius: 1rem;
+    /* max-width: 950px; */
+    width: auto;
+    box-shadow: 0 15px 28px 0 rgba(0, 0, 0, 0.19);
     border: transparent;
 }
 
@@ -154,6 +176,15 @@ a:hover {
     width: 40%;
 }
 
+.btnapplycode {
+    width: 40%;
+}
+
+.addToCarttotal {
+    display: flex;
+    justify-content: space-around;
+
+}
 
 
 /* increment decrement button */
@@ -227,6 +258,7 @@ input[type=number]::-webkit-outer-spin-button {
     background-color: rgba(60, 66, 66, 1);
     padding-top: 30px;
     padding-bottom: 30px;
+    margin-top: 40px;
 
 }
 
@@ -239,3 +271,5 @@ input[type=number]::-webkit-outer-spin-button {
     background-color: rgb(117, 117, 208);
 
 }
+
+/* cheakout  */
