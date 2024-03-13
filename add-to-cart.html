@@ -86,7 +86,7 @@
     </div>
 
     <!--  -->
-    <div class="card">
+     <div class="card">
       <div class="row">
         <div class="col">
           <div class="title">
@@ -94,9 +94,10 @@
               <div class="col addCartNav">
                 <div class="container pro__details">
                   <span>PRODUCT DETAILS</span>
+                  <span class="nav__pro_del">PRICE</span>
                   <span class="nav__pro_del">QUANTITY</span>
                   <span class="nav__pro_del">SHIPPING</span>
-                  <span class="nav__pro_del">PRICE</span>
+                  <span class="nav__pro_del">SUBTOTAL</span>
                   <span class="nav__pro_del">ACTION</span>
                 </div>
               </div>
@@ -104,55 +105,60 @@
           </div>
           <div class="border-bottom cartproduct">
             <div class="row main align-items-center">
-              <div class="col-2">
+              <!-- <div class="col-2">
                       <img
                         class="img-fluid addtoCartImg"
-                        src="${item.img}"
+                        src=""
                       />
                     </div>
                     <div class="col">
-                      <div class="row text-muted">${item.title}</div>
+                      <div class="row text-muted">hello</div>
+                    </div>
+                    <div class="col">
+                      <div class="row text-muted">helllo</div>
                     </div>
                     <form style="width:auto">
-                    <div class="value-button" id="decrease" onclick="decreaseValue(${
-                      item.id
-                    })" value="Decrease Value">-</div>
+                    <div class="value-button" id="decrease" onclick="decreaseValue()" value="Decrease Value">-</div>
                     <input type="number" id="number" value="${item.qty}" />
-                         <div class="value-button" id="increase" onclick="increaseValue(${
-                           item.id
-                         })" value="Increase Value">+</div>
+                         <div class="value-button" id="increase" onclick="increaseValue()" value="Increase Value">+</div>
                   </form>
                     <div class="col">
                       <div class="row text-muted">FREE</div>
                     </div>
-                    <div class="col">
-                      $ ${item.price.toFixed(2) * item.qty}
-                      <span class="close"
-                        ><img
+                    <div class="col">150
+                      <span class="close">
+                        <img
                           src="./assest/Delete.png"
                           alt=""
                           height="20px"
                           width="20px"
-                          onclick=delCartItem(${item.id})
+                          onclick=delCartItem()
                       /></span>
-                    </div>
+                    </div> -->
           </div>
         </div>
       </div>
-    </div>
+    </div> 
+ 
+    
     <!--  -->
-    <!-- <div class="container">
+    <div class="container paymentPart">
       <div class="row">
         <div class="col-lg-6 cheak__out">
           <strong> <p>Discount codes</p> </strong>
           <p>Enter your coupon code if you have one</p>
-          <input type="text" class="type" />
-          <button type="button" class="btn btn-outline-primary btnapply">
+        
+        <div class="apply__code d-flex align-items-end">
+          <input type="text" class="copuonCode" />
+          <button type="button" class="btn btn-outline-primary w-25">
             Apply Code
           </button>
-          <button type="button" class="btn btn-outline-primary">
+        </div>
+         
+          <a href="./allProduct.html"><button type="button" class="btn btn-outline-primary btn__cnShopping">
             Continue Shopping
           </button>
+        </a>
         </div>
         <div class="col-lg-6">
           <p class="addToCarttotal">
@@ -162,46 +168,25 @@
             Shipping <span class="delivery">$00</span>
           </p>
           <p class="addToCarttotal">
-            Grand Total <span class="grand__total"></span>
+          <b>  Grand Total </b> <span class="grand__total">$00</span>
           </p>
           <hr />
-          <button
+         <button
             type="button"
             class="btn btn-outline-primary btnaddcart proccedTo"
           >
             Procced To CheakOut
           </button>
+          </a>
         </div>
       </div>
-    </div> -->
+    </div>
 
-    <!-- <div class="col summary">
-      <hr />
-      <div class="row">
-        <div class="col" style="padding-left: 0">ITEMS 3</div>
-        <div class="col text-right">&euro; 132.00</div>
-      </div>
-      <form>
-        <p>SHIPPING</p>
-        <select>
-          <option class="text-muted">Standard-Delivery- &euro;5.00</option>
-        </select>
-        <p>GIVE CODE</p>
-        <input id="code" placeholder="Enter your code" />
-      </form>
-      <div
-        class="row"
-        style="border-top: 1px solid rgba(0, 0, 0, 0.1); padding: 2vh 0"
-      >
-        <div class="col">TOTAL PRICE</div>
-        <div class="col text-right">&euro; 137.00</div>
-      </div>
-      <button class="btn">CHECKOUT</button>
-    </div> -->
+
     <!--  -->
 
     <!-- footer -->
-    <div class="container footerColor">
+    <div class="footerColor">
       <div class="row text-light">
         <div class="col-md-3">
           <ul class="footerUL float-start">

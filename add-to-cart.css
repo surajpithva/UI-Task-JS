@@ -1,4 +1,9 @@
 /* navbar img  */
+.body {
+    font-family: "Inter", sans-serif;
+
+}
+
 .nav-bar {
     font-family: "Inter", sans-serif;
     font-size: 24px;
@@ -32,7 +37,7 @@ body {
 }
 
 .nav__pro_del {
-    margin-left: 220px;
+    margin-left: 160px;
 }
 
 
@@ -44,11 +49,6 @@ body {
     border: transparent;
 }
 
-@media(max-width:767px) {
-    .card {
-        margin: 3vh auto;
-    }
-}
 
 .cart {
     background-color: #fff;
@@ -57,22 +57,9 @@ body {
     border-top-left-radius: 1rem;
 }
 
-@media(max-width:767px) {
-    .cart {
-        padding: 4vh;
-        border-bottom-left-radius: unset;
-        border-top-right-radius: 1rem;
-    }
-}
 
 
-.row {
-    margin: 0;
-}
 
-.title b {
-    font-size: 1.5rem;
-}
 
 .main {
     margin: 0;
@@ -80,52 +67,27 @@ body {
     width: 100%;
 }
 
-.col-2,
-.col {
-    padding: 0 1vh;
-}
 
 
 
-.close {
-    margin-left: auto;
-    font-size: 0.7rem;
-}
+
+
 
 .addtoCartImg {
     width: 3.5rem;
+    margin-left: 75px;
+}
+
+
+
+.add__cart__img {
+    /* margin-left: 80px; */
 }
 
 .back-to-shop {
     margin-top: 4.5rem;
 }
 
-
-
-
-
-
-select {
-    border: 1px solid rgba(0, 0, 0, 0.137);
-    padding: 1.5vh 1vh;
-    margin-bottom: 4vh;
-    outline: none;
-    width: 100%;
-    background-color: rgb(247, 247, 247);
-}
-
-input {
-    border: 1px solid rgba(0, 0, 0, 0.137);
-    padding: 1vh;
-    margin-bottom: 4vh;
-    outline: none;
-    width: 100%;
-    background-color: rgb(247, 247, 247);
-}
-
-input:focus::-webkit-input-placeholder {
-    color: transparent;
-}
 
 .btn {
     background-color: #000;
@@ -138,7 +100,7 @@ input:focus::-webkit-input-placeholder {
     border-radius: 0;
 }
 
-.btn:focus {
+/* .btn:focus {
     box-shadow: none;
     outline: none;
     box-shadow: none;
@@ -146,7 +108,7 @@ input:focus::-webkit-input-placeholder {
     -webkit-box-shadow: none;
     -webkit-user-select: none;
     transition: none;
-}
+} */
 
 .btn:hover {
     color: white;
@@ -161,23 +123,23 @@ a:hover {
     text-decoration: none;
 }
 
-#code {
-    background-image: linear-gradient(to left, rgba(255, 255, 255, 0.253), rgba(255, 255, 255, 0.185)), url("https://img.icons8.com/small/16/000000/long-arrow-right.png");
-    background-repeat: no-repeat;
-    background-position-x: 95%;
-    background-position-y: center;
-}
-
+/* btnapply
 
 /* summery button */
 .btnaddcart {
     margin-left: 30%;
-    height: 15%;
+    height: 20%;
     width: 40%;
 }
 
-.btnapplycode {
+
+
+.copuonCode {
+    border: 1px solid rgba(0, 0, 0, 0.137);
     width: 40%;
+    background-color: rgb(247, 247, 247);
+    height: 35px;
+
 }
 
 .addToCarttotal {
@@ -247,6 +209,17 @@ input[type=number]::-webkit-outer-spin-button {
     margin: 0;
 }
 
+.btn__cnShopping {
+    width: 30%;
+}
+
+.paymentPart {
+    margin-top: 5%;
+}
+
+
+
+
 /* --------------------------------- */
 
 /* footerr */
@@ -255,6 +228,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .footerColor {
+
     background-color: rgba(60, 66, 66, 1);
     padding-top: 30px;
     padding-bottom: 30px;

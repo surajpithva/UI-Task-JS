@@ -1,28 +1,106 @@
 const navcategory = document.querySelector("#categoryList");
 const AllProductContainer = document.querySelector(".allProducts");
+const productsContainer = document.querySelector(".products");
 
-/////////////////fetch categories from api////////////////////////
-const selectData = () => {
-  fetch("https://fakestoreapi.com/products/categories")
-    .then((response) => response.json())
-    .then((data) => {
-      data.forEach((category) => {
-        const listItem = document.createElement("li");
-        listItem.className = "nav-item";
-        listItem.innerHTML = `<a class="nav-link" href="./categories.html?category=${category}">${category}</a>`;
-        document.querySelector("#categoryList2").appendChild(listItem);
+if (document.URL.includes("index.html")) {
+  /////////////////fetch categories from api////////////////////////
+  const selectData = () => {
+    fetch("https://fakestoreapi.com/products/categories")
+      .then((response) => response.json())
+      .then((data) => {
+        data.forEach((category) => {
+          const listItem = document.createElement("li");
+          listItem.className = "nav-item";
+          listItem.innerHTML = `<a class="nav-link" href="./categories.html?category=${category}">${category}</a>`;
+          document.querySelector("#categoryList2").appendChild(listItem);
+        });
       });
-    });
-};
+  };
+  selectData();
+  ////////////////////////////////////////////////////////////////////////////////////////
+  // first 4 data of api new arrival part
+  const getProductsData = () => {
+    fetch(`https://fakestoreapi.com/products?limit=4`)
+      .then((response) => response.json())
+      .then((data) => {
+        let setdata = data
+          .map((product) => {
+            return `
+              <div class="col-md-3 mb-4">
+                <div class="card product-card">
+                  <img src="${product.image}" class="card-img-top scale" alt="Product Image">
+                  <div class="card-body">
+                    <p class="card-text newArrival__catText">${product.category}</p>
+                  </div>
+                </div>
+              </div>
+            `;
+          })
+          .join("");
+        productsContainer.innerHTML = setdata;
+      });
+  };
 
-selectData();
+  getProductsData();
 
-// open model
+  /////////////fetch  all data of men categorys//////////////////////
+  const productsContainers = document.querySelector(".allMensProduct");
+  const getProductssData = () => {
+    fetch(`https://fakestoreapi.com/products/category/men's clothing`)
+      .then((response) => response.json())
+      .then((data) => {
+        let setdata = data
+          .map((product) => {
+            return `
+              <div class="col-md-3 mb-4">
+                <div class="card product-card">
+                  <img src="${product.image}" class="card-img-top scale" alt="Product Image">
+                  <div class="card-body">
+                    <p class="card-text">${product.category}</p>
+                  </div>
+                </div>
+              </div>
+            `;
+          })
+          .join("");
+        productsContainers.innerHTML = setdata;
+      });
+  };
+
+  getProductssData();
+  /////////////////////fetch first 4  data of women's categories///////////////////////
+  const productsWomen = document.querySelector(".allWomenProduct");
+  const getWomenProducts = () => {
+    fetch(`https://fakestoreapi.com/products/category/women's clothing?limit=4`)
+      .then((response) => response.json())
+      .then((data) => {
+        let setdata = data
+          .map((product) => {
+            return `
+                <div class="col-md-3 mb-4">
+                  <div class="card product-card">
+                    <img src="${product.image}" class="card-img-top scale" alt="Product Image">
+                    <div class="card-body">
+                      <p class="card-text">${product.category}</p>
+                      <a href="#" class="removeul">Explore Now!</a>
+                      <a href="./categories.html"> <button type="button" onchange="openModel()" class="btn btn-dark float-end">More</button></a>
+                      </div>
+                  </div>
+                </div>
+              `;
+          })
+          .join("");
+        productsWomen.innerHTML = setdata;
+      });
+  };
+  getWomenProducts();
+}
+
+////////////////////////////////// open model/////////////////////////////////////
 function openModals(productId) {
   console.log(`Opening modal for product with ID: ${productId}`);
 }
 
-//
 const openModal = function (id) {
   console.log(id);
   document.querySelector(".myModal").style.display = "block";
@@ -32,8 +110,8 @@ const openModal = function (id) {
   const category = document.getElementById("category");
   const price = document.getElementById("price");
   const rate = document.getElementById("rate");
-  const btncart = document.getElementById(".btncart");
-  const ppid = document.getElementById("ppid");
+  // const btncart = document.getElementById(".btncart");
+  // const ppid = document.getElementById("ppid");
 
   fetch(`https://fakestoreapi.com/products/${id}`)
     .then((response) => {
@@ -42,7 +120,7 @@ const openModal = function (id) {
     .then((data) => {
       image.src = data.image;
       title.innerHTML = data.title;
-      desc.innerHTML = data.description.slice(0, 90);
+      desc.innerHTML = data.description;
       category.innerHTML = data.category;
       price.innerHTML = data.price;
       rate.innerHTML = data.rating.rate;
@@ -87,56 +165,50 @@ function addTooCart() {
         uCart.push(Cart);
         localStorage.setItem("userCart", JSON.stringify(uCart));
       }
-
-      // uCart.push(Cart);
-      // localStorage.setItem("userCart", JSON.stringify(uCart));
-      // window.location.href("add-to-cart.html");
     });
-
-  // console.log(popid);
 }
 
-//
-//////////////////////Show All Product in allProduct page ////////////////////
+//script of allproduct.html page
 
 if (document.URL.includes("allProduct.html")) {
-  const getAllProductData = () => {
-    fetch(`https://fakestoreapi.com/products`)
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        // searchFunctionality(data);
-        let setdata = data
-          .map((product) => {
-            return `<div class="col-md-3">
-        <div class="card shadow p-3 mb-5 bg-white rounded" >
-  <img class="card-img-top product-img" src="${product.image}" alt="Card image cap">
-  <div class="card-body">
-  <p class="card-text">${product.title}</p>
+  //////////////////////Show All Product in allProduct page ////////////////////
 
-    <h5 class="card-title">${product.price}$</h5>
-    <p class="card-text">${product.category}</p>
-    <button type="button" class="btn btn-primary" onclick="openModal(${product.id})">More Details</button>
-     </div>
-  </div>
-</div>`;
-          })
-          .join("");
-        AllProductContainer.innerHTML = setdata;
+  document.addEventListener("DOMContentLoaded", function () {
+    const getAllProductData = () => {
+      fetch(`https://fakestoreapi.com/products`)
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) => {
+          let setdata = data
+            .map((product) => {
+              return `<div class="col-md-3">
+                            <div class="card shadow p-3 mb-5 bg-white rounded">
+                                <img class="card-img-top product-img" src="${product.image}" alt="Card image cap">
+                                <div class="card-body">
+                                    <p class="card-text">${product.title}</p>
+                                    <h5 class="card-title">${product.price}$</h5>
+                                    <p class="card-text">${product.category}</p>
+                                    <button type="button" class="btn btn-primary" onclick="openModal(${product.id})">More Details</button>
+                                </div>
+                            </div>
+                        </div>`;
+            })
+            .join("");
 
-        filteringData(data);
-      });
-  };
-  getAllProductData();
-  ///////////////////////////////////////////////////////
-  ///////////////Code for work three fun////////////////////////////////////////
+          AllProductContainer.innerHTML = setdata;
+        });
+    };
+
+    getAllProductData();
+  });
+
+  ////////////////Three func work toghther////////////////////////////////////////
 
   const filterData = document.querySelector(".filterData");
   const PriceSelect = document.querySelector(".PriceSelect");
   const procuctDropDown = document.querySelector("#procuctDropDown");
   const serchInput = document.querySelector(".data-search");
-  // const AllProductContainer = document.getElementById("AllProductContainer");
 
   // Function to handle search functionality
   function searchFunctionality(data) {
@@ -178,8 +250,10 @@ if (document.URL.includes("allProduct.html")) {
     filterData.addEventListener("click", (e) => {
       const selectedCategory = procuctDropDown.value;
       const selectedPrice = PriceSelect.value;
+      console.log(selectedCategory);
+      console.log(selectedPrice);
 
-      // Your filtering logic here
+      // filtering logic here
       const filteredData = data.filter((product) => {
         return (
           (selectedCategory === "all" ||
@@ -189,35 +263,17 @@ if (document.URL.includes("allProduct.html")) {
             (selectedPrice === "greaterHundred" && product.price > 100))
         );
       });
-
+      console.log(filterData);
       renderFilteredProducts(filteredData);
     });
   };
 
   // Assume you have product data available in the 'products' array
+
   const products = []; // Replace with your actual product data
   filteringData(products);
-
   // Call search functionality with your product data
   searchFunctionality(products);
-
-  // const renderHTML=(data)=>{
-  //   return data.map((product)=>`
-  //               <div class="col-md-3">
-  //                 <div class="card shadow p-3 mb-5 bg-white rounded" >
-  //                   <img class="card-img-top product-img" src="${product.image}" alt="Card image cap">
-  //                   <div class="card-body">
-  //                     <p class="card-text">${product.title}</p>
-  //                     <h5 class="card-title">${product.price}$</h5>
-  //                     <p class="card-text">${product.category}</p>
-  //                     <button type="button" class="btn btn-primary" onclick="openModal(${product.id})">More Details</button>
-  //                   </div>
-  //                 </div>
-  //               </div>
-  //             `)
-  //             .join("")
-
-  // }
 }
 
 //////////////////Select Categories////////////////////////////////////
@@ -225,7 +281,6 @@ const selectedData = () => {
   fetch("https://fakestoreapi.com/products/categories")
     .then((response) => response.json())
     .then((data) => {
-      // console.log(data);
       const setdata = data.map(
         (category) => `<option value="${category}">${category}</option>`
       );
@@ -236,92 +291,3 @@ const selectedData = () => {
 };
 
 selectedData();
-
-////////////////fetch  4 products from api//////////////////
-
-if (document.URL.includes("index.html")) {
-  const productsContainer = document.querySelector(".products");
-
-  const getProductsData = () => {
-    fetch(`https://fakestoreapi.com/products?limit=4`)
-      .then((response) => response.json())
-      .then((data) => {
-        let setdata = data
-          .map((product) => {
-            return `
-              <div class="col-md-3 mb-4">
-                <div class="card product-card">
-                  <img src="${product.image}" class="card-img-top scale" alt="Product Image">
-                  <div class="card-body">
-                    <p class="card-text">${product.category}</p>
-                  </div>
-                </div>
-              </div>
-            `;
-          })
-          .join("");
-        productsContainer.innerHTML = setdata;
-      });
-  };
-
-  getProductsData();
-
-  /////////////////////////////////////////////////////////////////////////
-
-  /////////////fetch data 8 products of men category//////////////////////
-  const productsContainers = document.querySelector(".allMensProduct");
-  const getProductssData = () => {
-    fetch(`https://fakestoreapi.com/products/category/men's clothing`)
-      .then((response) => response.json())
-      .then((data) => {
-        let setdata = data
-          .map((product) => {
-            return `
-              <div class="col-md-3 mb-4">
-                <div class="card product-card">
-                  <img src="${product.image}" class="card-img-top scale" alt="Product Image">
-                  <div class="card-body">
-                    <p class="card-text">${product.category}</p>
-                  </div>
-                </div>
-              </div>
-            `;
-          })
-          .join("");
-        productsContainers.innerHTML = setdata;
-      });
-  };
-
-  getProductssData();
-
-  ////////////////////////////////////////////////////////////////////
-
-  /////////////////////fetch data of women's categories///////////////////////
-  const productsWomen = document.querySelector(".allWomenProduct");
-  const getWomenProducts = () => {
-    fetch(`https://fakestoreapi.com/products/category/women's clothing?limit=4`)
-      .then((response) => response.json())
-      .then((data) => {
-        let setdata = data
-          .map((product) => {
-            return `
-                <div class="col-md-3 mb-4">
-                  <div class="card product-card">
-                    <img src="${product.image}" class="card-img-top scale" alt="Product Image">
-                    <div class="card-body">
-                      <p class="card-text">${product.category}</p>
-                      <a href="#" class="removeul">Explore Now!</a>
-                      <a href="./categories.html"> <button type="button" onchange="openModel()" class="btn btn-dark">More</button></a>
-                      </div>
-                  </div>
-                </div>
-              `;
-          })
-          .join("");
-        productsWomen.innerHTML = setdata;
-      });
-  };
-  getWomenProducts();
-}
-
-//////////////////////filter Price////////////////////////////
