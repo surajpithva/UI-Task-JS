@@ -93,7 +93,7 @@
 /* vertical line code */
 .verticalLine {
     border-left: 5px solid rgba(138, 51, 253, 1);
-    height: 40px;
+    /* height: 40px; */
     border-radius: 10px;
 }
 
@@ -221,10 +221,22 @@
     background-color: rgba(60, 66, 66, 1);
     padding-top: 30px;
     padding-bottom: 30px;
-
 }
 
 .footerUL img {
     height: 20px;
     width: 20px;
+}
+
+.carousel-item {
+    display: flex;
+    justify-content: center;
+}
+
+.carousel-item .feedback-item {
+    border: 1px solid black;
+    padding: 10px;
+    margin: 10px;
+    width: 300px;
+    /* Adjust as needed */
 }
