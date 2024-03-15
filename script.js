@@ -2,6 +2,14 @@ const navcategory = document.querySelector("#categoryList");
 const AllProductContainer = document.querySelector(".allProducts");
 const productsContainer = document.querySelector(".products");
 
+window.addEventListener("load", () => {
+  const loader = document.querySelector(".loader");
+  loader.classList.add("loader-hidden");
+  loader.addEventListener("transitioned", () => {
+    document.body.removeChild(".loader");
+  });
+});
+
 if (document.URL.includes("index.html")) {
   /////////////////fetch categories from api////////////////////////
   const selectData = () => {
@@ -141,6 +149,11 @@ function closeModal() {
 let uCart = JSON.parse(localStorage.getItem("userCart")) || [];
 
 function addTooCart() {
+  Swal.fire({
+    title: "Good job!",
+    text: "Your Product add in cart!",
+    icon: "success",
+  });
   const proid = document.getElementById("prodid").value;
   fetch(`https://fakestoreapi.com/products/${proid}`)
     .then((response) => {
@@ -174,7 +187,7 @@ function addTooCart() {
 if (document.URL.includes("allProduct.html")) {
   //////////////////////Show All Product in allProduct page ////////////////////
 
-  document.addEventListener("DOMContentLoaded", function () {
+  document.addEventListener("DOMContentLoaded", () => {
     const searchInput = document.getElementById("search");
     const categorySelect = document.getElementById("categoryDropDown");
     const priceSelect = document.getElementById("priceDropDown");
@@ -262,5 +275,3 @@ if (document.URL.includes("allProduct.html")) {
     getAllProductData();
   });
 }
-
-//////////////////Select Categories////////////////////////////////////

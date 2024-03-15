@@ -21,6 +21,7 @@
     href="https://fonts.googleapis.com/css2?family=Cabin&display=swap"
     rel="stylesheet"
   />
+
   <style>
     .product-img {
       width: 50%;
@@ -49,8 +50,49 @@
       height: 20px;
       width: 20px;
     }
+    /* loader */
+    .loader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #f7f9fb;
+      transition: opacity 1s, visibility 2s;
+    }
+
+    .loader-hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .loader::after {
+      content: "";
+      width: 75px;
+      height: 75px;
+      border: 15px solid pink;
+      border-top-color: blue;
+      border-radius: 50%;
+      animation: loading 0.75s ease infinite;
+    }
+
+    @keyframes loading {
+      from {
+        transform: rotate(0turn);
+      }
+
+      to {
+        transform: rotate(1turn);
+      }
+    }
   </style>
   <body>
+    <!-- loader -->
+    <div class="loader"></div>
+
     <!--  -->
     <div class="container">
       <nav class="navbar navbar-expand-lg navbar-light">
@@ -232,6 +274,9 @@
     </div>
     <!--  -->
   </body>
+  <script src="./script.js"></script>
+  <script src="./add-to-cart.js"></script>
+
   <script>
     const searchParams = new URLSearchParams(window.location.search);
     // console.log(searchParams.get("category"));
@@ -259,9 +304,6 @@
         selProductsContainer.innerHTML = setdata;
       });
   </script>
-
-  <script src="./script.js"></script>
-  <!-- <script src="./add-to-cart.js"></script> -->
 
   <script
     src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
